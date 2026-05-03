@@ -1,20 +1,24 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# CivicFlow | Your Election Roadmap
 
-# Run and deploy your AI Studio app
+CivicFlow is an interactive, AI-powered platform designed to educate voters on the democratic process. Navigating the complex mechanics of the electoral process is now easier with machine-assisted clarity.
 
-This contains everything you need to run your app locally.
+## Features
+- **Sequential Roadmap**: A scannable, grid-style timeline detailing the election cycle.
+- **AI Intelligence**: An integrated Gemini-powered assistant designed to answer complex voting queries with real-time feedback.
+- **Premium UI**: Built with a high-end, editorial "Swiss-style" design.
 
-View your app in AI Studio: https://ai.studio/apps/1768aa90-8faf-43ab-9b8f-1f1e102335eb
-
-## Run Locally
-
-**Prerequisites:**  Node.js
-
+## How to Run Locally
 
 1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+   ```bash
+   npm install
+   ```
+2. Create a `.env` file in the root directory and add your Gemini API Key:
+   ```env
+   GEMINI_API_KEY=your_actual_api_key_here
+   ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+4. Open [http://localhost:3000](http://localhost:3000) to view the app!
