@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section className="relative pt-48 pb-32 overflow-hidden bg-[#FBFBFA]">
+    <section className="relative pt-48 pb-32 overflow-hidden bg-[#FBFBFA]" aria-labelledby="hero-heading">
       {/* Dynamic Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <motion.div 
@@ -39,7 +39,7 @@ export default function Hero() {
               <span className="w-12 h-px bg-[#1A1A1A]" />
             </div>
 
-            <h1 className="text-7xl md:text-[140px] font-black tracking-[-0.04em] leading-[0.82] mb-16 font-display uppercase italic">
+            <h1 id="hero-heading" className="text-7xl md:text-[140px] font-black tracking-[-0.04em] leading-[0.82] mb-16 font-display uppercase italic">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#1A1A1A] via-[#333333] to-[#1A1A1A] drop-shadow-sm">
                 Democracy
               </span>
@@ -57,6 +57,7 @@ export default function Hero() {
                    <button 
                     onClick={() => document.getElementById('assistant')?.scrollIntoView({ behavior: 'smooth' })}
                     className="p-4 rounded-full border border-[#1A1A1A]/10 hover:bg-[#1A1A1A] hover:text-white transition-all group hover:shadow-lg hover:shadow-[#1A1A1A]/20 hover:border-transparent"
+                    aria-label="Scroll down to the AI assistant section"
                   >
                     <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
                   </button>

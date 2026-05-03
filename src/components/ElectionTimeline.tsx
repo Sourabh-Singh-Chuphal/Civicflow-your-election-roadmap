@@ -13,19 +13,19 @@ const IconWrapper = ({ name }: { name: string }) => {
 
 export default function ElectionTimeline() {
   return (
-    <section id="process" className="py-48 bg-white border-t border-[#1A1A1A]/5">
+    <section id="process" className="py-48 bg-white border-t border-[#1A1A1A]/5" aria-labelledby="timeline-heading">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex flex-col md:flex-row justify-between items-end mb-32 gap-12">
           <div className="max-w-2xl">
             <span className="text-[10px] font-black uppercase tracking-[0.4em] font-mono text-[#1A1A1A]/30 mb-6 block">01 / Sequential Roadmap</span>
-            <h2 className="text-6xl md:text-8xl font-black text-[#1A1A1A] tracking-[-0.04em] font-display uppercase italic leading-none">The Path.</h2>
+            <h2 id="timeline-heading" className="text-6xl md:text-8xl font-black text-[#1A1A1A] tracking-[-0.04em] font-display uppercase italic leading-none">The Path.</h2>
           </div>
           <p className="text-[#1A1A1A]/70 max-w-sm text-lg leading-relaxed italic font-display">
             Democracy is a sequence. A series of intentional steps that ensure your voice is heard and verified.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-[#1A1A1A]/10 border border-[#1A1A1A]/10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-[#1A1A1A]/10 border border-[#1A1A1A]/10" role="list" aria-label="Election process steps">
           {ELECTION_STEPS.map((step, index) => (
             <motion.div 
               key={step.id}
@@ -34,6 +34,8 @@ export default function ElectionTimeline() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="p-12 bg-white relative group min-h-[440px] flex flex-col transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] hover:bg-gradient-to-br hover:from-white hover:to-[#FBFBFA] z-10 hover:z-20"
+              role="listitem"
+              aria-label={`Step ${index + 1}: ${step.title} - Status: ${step.status}`}
             >
               <div className="absolute inset-0 border-2 border-transparent group-hover:border-emerald-500/10 transition-colors pointer-events-none" />
               <div className="flex justify-between items-start mb-16 relative z-10">

@@ -40,12 +40,12 @@ export default function AIAssistant() {
   };
 
   return (
-    <section id="assistant" className="py-48 bg-[#FBFBFA] relative overflow-hidden border-t border-[#1A1A1A]/5">
+    <section id="assistant" className="py-48 bg-[#FBFBFA] relative overflow-hidden border-t border-[#1A1A1A]/5" aria-labelledby="assistant-heading">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
         <div className="grid lg:grid-cols-3 gap-24 items-start">
           <div className="lg:col-span-1">
             <span className="text-[10px] font-black uppercase tracking-[0.4em] font-mono text-[#1A1A1A]/30 mb-8 block">02 / Intelligence Layer</span>
-            <h2 className="text-6xl font-black text-[#1A1A1A] tracking-[-0.04em] mb-12 font-display uppercase italic leading-[0.9]">The Lab.</h2>
+            <h2 id="assistant-heading" className="text-6xl font-black text-[#1A1A1A] tracking-[-0.04em] mb-12 font-display uppercase italic leading-[0.9]">The Lab.</h2>
             <p className="text-[#1A1A1A]/50 text-lg leading-relaxed italic font-display mb-12">
               Our neural engine is trained on official constitutional guidelines and regional procedural mandates.
             </p>
@@ -71,7 +71,7 @@ export default function AIAssistant() {
               </div>
 
               {/* Messages Area */}
-              <div ref={scrollRef} className="flex-1 overflow-y-auto p-8 md:p-12 space-y-12 scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-transparent">
+              <div ref={scrollRef} className="flex-1 overflow-y-auto p-8 md:p-12 space-y-12 scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-transparent" role="log" aria-live="polite" aria-label="Chat conversation" aria-busy={isLoading}>
                 {messages.length === 0 && (
               <div className="h-full flex flex-col items-center justify-center p-4 max-w-2xl mx-auto w-full">
                 <motion.div
@@ -165,15 +165,22 @@ export default function AIAssistant() {
                 <form onSubmit={(e) => { e.preventDefault(); handleSend(); }} className="flex gap-4 relative">
                   <input
                     type="text"
+                    id="chat-input"
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     placeholder="Enter query into the roadmap archive..."
                     className="flex-1 bg-gray-50/50 border border-gray-200 rounded-xl px-6 py-5 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all font-sans text-sm tracking-tight placeholder:italic placeholder:text-gray-400 shadow-inner"
+                    aria-label="Type your election question here"
+                    aria-describedby="chat-hint"
+                    disabled={isLoading}
                   />
+                  <p id="chat-hint" className="sr-only">Ask any question about voter registration, election timelines, or polling procedures</p>
                   <button 
                     type="submit"
                     disabled={!input.trim() || isLoading}
                     className="bg-[#1A1A1A] text-white px-8 rounded-xl transition-all duration-300 hover:bg-emerald-600 hover:shadow-lg hover:shadow-emerald-600/30 disabled:opacity-20 disabled:hover:bg-[#1A1A1A] disabled:hover:shadow-none flex items-center justify-center gap-2 group"
+                    aria-label={isLoading ? 'Sending message, please wait...' : 'Send message to CivicFlow AI'}
+                    aria-busy={isLoading}
                   >
                     <span className="text-sm font-bold uppercase tracking-wider hidden md:block">Transmit</span>
                     <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
